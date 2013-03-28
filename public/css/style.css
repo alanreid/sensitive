@@ -1,0 +1,182 @@
+body { 
+	margin:0;
+	padding:0;
+}
+
+h1 {
+	color:#fff;
+	font-family: 'Droid', sans-serif
+}
+
+.btn-rounded {
+	background-color:#f2f2f2;
+	display: inline-block;
+	font-size:30pt;
+	font-weight:bold;
+	color:#000;
+	border:5px solid #ddd;
+	background-size:cover; 
+	background-repeat:no-repeat; 
+	background-position:center center;
+	-webkit-border-radius:80px; 
+	-moz-border-radius:80px; 
+	border-radius:80px; 
+  	box-shadow:0px 0px 20px rgba(0, 0, 0, 0.4);
+  	text-decoration:none;
+  	width:90px;
+  	height:70px;
+  	padding-top:20px;
+  	text-shadow:1px 1px 1px #666;
+  	vertical-align:middle;
+  	margin:30px;
+}
+
+body { 
+	background:#c0c0c0;
+}
+
+body.home { 
+	background:#000 url(https://twimg0-a.akamaihd.net/profile_background_images/711804556/7a575fccd0707c3c196d9691c43e775c.gif);	
+}
+
+#container { 
+	width:960px;
+	margin:0 auto;
+	text-align:center;
+	position: relative;
+	-webkit-perspective: 960px;
+    -moz-perspective: 960px;
+         perspective: 960px;
+}
+
+body.play #container {
+	width:100% !important;
+}
+
+#addPlayer:hover {
+	background-color:#ddd;
+	border:5px solid #f2f2f2;
+}
+
+#start { 
+	display:none;
+}
+
+.playerContainer { 
+	z-index:10001;
+	width:230px; 
+	height:280px;
+	display: inline-block;
+	position: relative;
+    margin:30px;
+	vertical-align:middle;
+	-webkit-backface-visibility: hidden;
+
+	-webkit-transition: -webkit-transform 1s;
+     -moz-transition: -moz-transform 1s;
+          transition: transform 1s;
+
+  	-webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+
+  	-webkit-transform-origin: right center;
+    -moz-transform-origin: right center;
+          transform-origin: right center;
+}
+
+.player { 
+	width:230px;
+	height:260px; 
+	position:absolute;
+	
+
+}
+
+.player figure {
+	display:block;
+	margin:0;
+	position:absolute;
+	height: 270px;
+  	width: 100%;	
+  	padding:30px 0 10px 0;  	
+	-webkit-backface-visibility: hidden;
+	 -moz-backface-visibility: hidden;
+	      backface-visibility: hidden;
+
+	      		width:230px;
+	height:260px; 
+	position:absolute;
+	padding:30px 0 10px 0;  
+	background-color:#f2f2f2; 
+	-webkit-border-radius:8px; 
+	-moz-border-radius:8px; 
+	border-radius:8px; 
+	box-shadow: 0px 0px 0px 8px rgba(100,100,100,0.5);      
+	-webkit-background-clip: padding-box; 
+	background-clip: padding-box;
+} 
+
+.player figure.back {
+	-webkit-transform: rotateY(180deg);
+     -moz-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.flipped {
+	-webkit-transform: translateX(-100%) rotateY(-180deg);
+     -moz-transform: translateX(-100%) rotateY(-180deg);
+          transform: translateX(-100%) rotateY(-180deg);
+}
+
+.player1 figure.back { box-shadow: 0px 0px 0px 8px rgba(255,0,0,0.8); }
+.player2 figure.back { box-shadow: 0px 0px 0px 8px rgba(0,255,0,0.8); }
+.player3 figure.back { box-shadow: 0px 0px 0px 8px rgba(0,0,255,0.8); }
+.player4 figure.back { box-shadow: 0px 0px 0px 8px rgba(0,255,255,0.5); }
+.player5 figure.back { box-shadow: 0px 0px 0px 8px rgba(100,10,200,0.5); }
+.player6 figure.back { box-shadow: 0px 0px 0px 8px rgba(200,100,10,0.5); }
+
+.player h2 { 
+	text-align:center; 
+	font-family:'Droid Sans', sans-serif;
+}
+
+.player h3 { 
+	text-align:center; 
+	font-family:'Droid Sans', sans-serif;
+	font-size: 9pt;
+	color:#666;
+}
+
+.pic {
+	margin:0 auto; 
+  	width:150px; 
+  	height:150px; 
+  	border:5px solid #eee; 
+	background-size:cover; 
+	background-repeat:no-repeat; 
+	background-position:center center;
+	-webkit-border-radius:80px; 
+	-moz-border-radius:80px; 
+	border-radius:80px; 
+  	box-shadow:0px 0px 20px rgba(0, 0, 0, 0.4);  
+}
+
+.front .pic {
+	-webkit-border-radius:0; 
+	-moz-border-radius:0; 
+	border-radius:0; 
+}
+
+.close { 
+	position:absolute;
+	top:-13px;
+	right:-17px;
+	width:27px;
+	height:27px;
+	background:url(/img/close.png); 
+}
+
+#FBlogin {
+	display:none;
+}

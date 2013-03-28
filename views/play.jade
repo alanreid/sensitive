@@ -1,0 +1,9 @@
+extends layout
+
+block prepend body
+  body.play
+
+block content
+  #fb-root
+  h2 Logging in...
+  input#FBlogin(type="button", value="Login with Facebook") 
