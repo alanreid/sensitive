@@ -33,7 +33,13 @@ Sensitive.prototype.isMobile = function() {
 
 Sensitive.prototype.onPlayerConnect = function(data) {};
 Sensitive.prototype.onPlayerLogin = function(data) {};
-Sensitive.prototype.onPlayerData = function(data) {};
+Sensitive.prototype.onPlayerData = function(data) {
+  return data;
+};
+Sensitive.prototype.onAuthInit = function() {};
+Sensitive.prototype.init = function() {
+  this.onAuthInit();
+};
 Sensitive.prototype.onSensor = function(sensor, callback) {
 
   if(typeof callback === 'function') {

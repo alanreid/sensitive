@@ -9,47 +9,7 @@ Sensitive.prototype.startMobile = function(callback) {
     event.preventDefault();
   }, false);
 
-  $('#FBlogin').click(function() {
-    FB.login(function(response) {
-      if(response.authResponse) {
-        FB.api('/me?fields=name,picture', function(data) {
-          that.sendUserData(data);
-        });
-      }
-    });
-  });
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '157671151056564',
-      channelUrl : '/channel.html',
-      status     : true,
-      cookie     : true,
-      xfbml      : false
-    });
-
-    FB.getLoginStatus(function(response) {
-      if(response.status === 'connected') {
-        $('#FBlogin').hide();
-        FB.api('/me', function(data) {
-          that.sendUserData(data);
-        });
-      } else {
-        that.onPlayerLogin();
-      }
-    });
-  };
-
-  (function(d, debug){
-    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement('script'); js.id = id; js.async = true;
-    js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
-    ref.parentNode.insertBefore(js, ref);
-  }(document, /*debug*/ false));
-
   callback();
-
 };
 
 Sensitive.prototype.startMobileTransport = function() {
@@ -61,15 +21,14 @@ Sensitive.prototype.startMobileTransport = function() {
 
 };
 
-Sensitive.prototype.sendUserData = function(fbResponse) {
+Sensitive.prototype.sendUserData = function(data) {
 
-  var data = {
+  var info = {
     session: this.sessionId,
     player: this.playerId,
-    name: fbResponse.name,
-    picture: 'http://graph.facebook.com/' + fbResponse.id + '/picture?type=large'
+    name: 'N/A',
+    picture: ''
   };
 
-  this.socket.emit('save_user', data);
-  this.onPlayerData(data);
+  this.socket.emit('save_user', $.extend(info, this.onPlayerData(data)));
 };
