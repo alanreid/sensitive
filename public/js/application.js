@@ -74,7 +74,7 @@ sensitive.onPlayerData = function(fbResponse) {
   };
 
   $('#FBlogin').hide();
-  $('h2').html('Hi ' + data.name + '!');
+  $('h2').html('Hi ' + data.name + '!').after('<img src="/img/signal.gif" />');
 
   return data;
 };
