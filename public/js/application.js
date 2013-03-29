@@ -102,6 +102,7 @@ sensitive.onSensor('motion', function(data) {
 
 sensitive.addSensor(orientationSensor);
 //sensitive.addSensor(motionSensor);
+//sensitive.addSensor(compassSensor);
 
 $(function() {
   sensitive.init();

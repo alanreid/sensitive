@@ -68,6 +68,10 @@ exports.sensitive = function(server, app) {
     socket.on('motion_sensor', function(data) {
       io.sockets.in(data.session).emit('motion_sensor', data);
     });
+
+    socket.on('compass_sensor', function(data) {
+      io.sockets.in(data.session).emit('compass_sensor', data);
+    });
   });
 
 };
