@@ -61,6 +61,7 @@ exports.sensitive = function(server, app) {
       io.sockets.emit('start_sensors', data);
     });
 
+    // REPLACE THIS WITH A GENERIC EVENT
     socket.on('orientation_sensor', function(data) {
       io.sockets.in(data.session).emit('orientation_sensor', data);
     });
@@ -71,6 +72,10 @@ exports.sensitive = function(server, app) {
 
     socket.on('compass_sensor', function(data) {
       io.sockets.in(data.session).emit('compass_sensor', data);
+    });
+
+    socket.on('location_sensor', function(data) {
+      io.sockets.in(data.session).emit('location_sensor', data);
     });
   });
 
