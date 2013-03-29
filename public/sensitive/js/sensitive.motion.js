@@ -2,7 +2,7 @@
 var motionSensor = new Sensor('motion');
 
 motionSensor.data.gamma = 0;
-motionSensor.data.beta  = 0,
+motionSensor.data.beta  = 0;
 
 motionSensor.watch = function() {
   var that = this;

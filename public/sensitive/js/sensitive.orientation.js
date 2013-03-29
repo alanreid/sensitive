@@ -2,7 +2,7 @@
 var orientationSensor = new Sensor('orientation');
 
 orientationSensor.data.tiltLR    = 0;
-orientationSensor.data.tiltFB    = 0,
+orientationSensor.data.tiltFB    = 0;
 orientationSensor.data.direction = 0;
 
 orientationSensor.watch = function() {
