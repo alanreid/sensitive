@@ -87,12 +87,3 @@ Sensor.prototype.handler = function(eventData) {
   }
 };
 
-
-
-
-
-
-
-
-
-

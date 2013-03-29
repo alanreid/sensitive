@@ -15,7 +15,7 @@
   ],
   "subdomain": "sensitive",
   "scripts": {
-    "postdeploy": "chmod -R 777 public/tmp",
+    "postdeploy": "chmod -R 777 public/sensitive/tmp",
     "start": "app.js"
   },
   "engines": {

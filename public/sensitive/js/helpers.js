@@ -15,7 +15,7 @@ function loadTemplate(tpl, view, fn) {
     return;
   }
 
-  $.get('/templates/' + tpl + '.mustache', function(template) {
+  $.get('/sensitive/templates/' + tpl + '.mustache', function(template) {
     localStorage.setItem("template_" + tpl, template);
     applyTemplate(template, view, fn);
   });
