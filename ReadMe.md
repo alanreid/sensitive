@@ -5,7 +5,7 @@ This is the first version and there's lots to be done, so any help is greatly ap
 
 <img src="http://f.cl.ly/items/3Z140G2p341D38462J44/Screen%20Shot%202013-03-29%20at%202.44.46%20PM.png" height="300" />
 
-<img src="http://f.cl.ly/items/1c2b3a411A2p0Z2m1L2f/2013-03-29%2014.47.31.png" height="300" />
+<img src="http://cl.ly/image/2e1n030Z2V2d/2013-03-29%2014.52.33.png" height="300" />
 
 ### Installation
 
