@@ -38,7 +38,9 @@ Sensitive.prototype.onPlayerData = function(data) {
 };
 Sensitive.prototype.onAuthInit = function() {};
 Sensitive.prototype.init = function() {
-  this.onAuthInit();
+  if(this.isMobile()) {
+    this.onAuthInit();
+  }
 };
 Sensitive.prototype.onSensor = function(sensor, callback) {
 

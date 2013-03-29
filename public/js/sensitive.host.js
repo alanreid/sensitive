@@ -50,11 +50,14 @@ Sensitive.prototype.startHostTransport = function() {
     that.onPlayerConnect(data);
   });
 
-  that.socket.on('orientation_sensor', function(data) {
-    that.onSensor('orientation', data);
-  });
+  if(Object.keys(this.sensors).length > 0) {
+    for(var sensor in this.sensors) {
+      if(typeof this.sensors[sensor] === 'object') {
+        that.socket.on(sensor + '_sensor', function(data) {
+          that.onSensor(sensor, data);
+        });
+      }
+    }
+  }
 
-  that.socket.on('motion_sensor', function(data) {
-    that.onSensor('motion', data);
-  });
 };
