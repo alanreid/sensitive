@@ -1,11 +1,25 @@
-body { 
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Sans'), local('DroidSans'), url(../fonts/droid.woff) format('woff');
+}
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url(../fonts/droid-bold.woff) format('woff');
+}
+
+body {
 	margin:0;
 	padding:0;
 }
 
 h1 {
 	color:#fff;
-	font-family: 'Droid', sans-serif
+	font-family: 'Droid Sans', sans-serif
 }
 
 .btn-rounded {
@@ -15,12 +29,12 @@ h1 {
 	font-weight:bold;
 	color:#000;
 	border:5px solid #ddd;
-	background-size:cover; 
-	background-repeat:no-repeat; 
+	background-size:cover;
+	background-repeat:no-repeat;
 	background-position:center center;
-	-webkit-border-radius:80px; 
-	-moz-border-radius:80px; 
-	border-radius:80px; 
+	-webkit-border-radius:80px;
+	-moz-border-radius:80px;
+	border-radius:80px;
   	box-shadow:0px 0px 20px rgba(0, 0, 0, 0.4);
   	text-decoration:none;
   	width:90px;
@@ -31,15 +45,15 @@ h1 {
   	margin:30px;
 }
 
-body { 
+body {
 	background:#c0c0c0;
 }
 
-body.home { 
-	background:#000 url(https://twimg0-a.akamaihd.net/profile_background_images/711804556/7a575fccd0707c3c196d9691c43e775c.gif);	
+body.home {
+	background:#000 url(../img/background.gif);
 }
 
-#container { 
+#container {
 	width:960px;
 	margin:0 auto;
 	text-align:center;
@@ -58,13 +72,13 @@ body.play #container {
 	border:5px solid #f2f2f2;
 }
 
-#start { 
+#start {
 	display:none;
 }
 
-.playerContainer { 
+.playerContainer {
 	z-index:10001;
-	width:230px; 
+	width:230px;
 	height:280px;
 	display: inline-block;
 	position: relative;
@@ -85,11 +99,11 @@ body.play #container {
           transform-origin: right center;
 }
 
-.player { 
+.player {
 	width:230px;
-	height:260px; 
+	height:260px;
 	position:absolute;
-	
+
 
 }
 
@@ -98,24 +112,24 @@ body.play #container {
 	margin:0;
 	position:absolute;
 	height: 270px;
-  	width: 100%;	
-  	padding:30px 0 10px 0;  	
+  	width: 100%;
+  	padding:30px 0 10px 0;
 	-webkit-backface-visibility: hidden;
 	 -moz-backface-visibility: hidden;
 	      backface-visibility: hidden;
 
 	      		width:230px;
-	height:260px; 
+	height:260px;
 	position:absolute;
-	padding:30px 0 10px 0;  
-	background-color:#f2f2f2; 
-	-webkit-border-radius:8px; 
-	-moz-border-radius:8px; 
-	border-radius:8px; 
-	box-shadow: 0px 0px 0px 8px rgba(100,100,100,0.5);      
-	-webkit-background-clip: padding-box; 
+	padding:30px 0 10px 0;
+	background-color:#f2f2f2;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	border-radius:8px;
+	box-shadow: 0px 0px 0px 8px rgba(100,100,100,0.5);
+	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
-} 
+}
 
 .player figure.back {
 	-webkit-transform: rotateY(180deg);
@@ -136,45 +150,45 @@ body.play #container {
 .player5 figure.back { box-shadow: 0px 0px 0px 8px rgba(100,10,200,0.5); }
 .player6 figure.back { box-shadow: 0px 0px 0px 8px rgba(200,100,10,0.5); }
 
-.player h2 { 
-	text-align:center; 
+.player h2 {
+	text-align:center;
 	font-family:'Droid Sans', sans-serif;
 }
 
-.player h3 { 
-	text-align:center; 
+.player h3 {
+	text-align:center;
 	font-family:'Droid Sans', sans-serif;
 	font-size: 9pt;
 	color:#666;
 }
 
 .pic {
-	margin:0 auto; 
-  	width:150px; 
-  	height:150px; 
-  	border:5px solid #eee; 
-	background-size:cover; 
-	background-repeat:no-repeat; 
+	margin:0 auto;
+  	width:150px;
+  	height:150px;
+  	border:5px solid #eee;
+	background-size:cover;
+	background-repeat:no-repeat;
 	background-position:center center;
-	-webkit-border-radius:80px; 
-	-moz-border-radius:80px; 
-	border-radius:80px; 
-  	box-shadow:0px 0px 20px rgba(0, 0, 0, 0.4);  
+	-webkit-border-radius:80px;
+	-moz-border-radius:80px;
+	border-radius:80px;
+  	box-shadow:0px 0px 20px rgba(0, 0, 0, 0.4);
 }
 
 .front .pic {
-	-webkit-border-radius:0; 
-	-moz-border-radius:0; 
-	border-radius:0; 
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border-radius:0;
 }
 
-.close { 
+.close {
 	position:absolute;
 	top:-13px;
 	right:-17px;
 	width:27px;
 	height:27px;
-	background:url(/img/close.png); 
+	background:url(../img/close.png);
 }
 
 #FBlogin {
