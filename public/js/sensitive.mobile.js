@@ -1,20 +1,19 @@
 
-if($('body.play').length > 0) {
+Sensitive.prototype.startMobile = function(callback) {
 
-  var sessionId = param('session');
-  var playerId  = param('player');
+  var that = this;
+  this.sessionId = param('session');
+  this.playerId  = param('player');
 
-  var socket = io.connect('http://' + location.hostname);
-
-  socket.on('start_sensors', function() {
-    setTimeout(Sensitive.watch, 2000);
-  });
+  document.body.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+  }, false);
 
   $('#FBlogin').click(function() {
     FB.login(function(response) {
       if(response.authResponse) {
         FB.api('/me?fields=name,picture', function(data) {
-          sendUserData(data);
+          that.sendUserData(data);
         });
       }
     });
@@ -33,11 +32,10 @@ if($('body.play').length > 0) {
       if(response.status === 'connected') {
         $('#FBlogin').hide();
         FB.api('/me', function(data) {
-          sendUserData(data);
+          that.sendUserData(data);
         });
       } else {
-        $('h2').html('');
-        $('#FBlogin').show();
+        that.onPlayerLogin();
       }
     });
   };
@@ -50,32 +48,28 @@ if($('body.play').length > 0) {
     ref.parentNode.insertBefore(js, ref);
   }(document, /*debug*/ false));
 
-}
+  callback();
 
-function sendUserData(fbResponse) {
+};
+
+Sensitive.prototype.startMobileTransport = function() {
+
+  var that = this;
+  that.socket.on('start_sensors', function() {
+    setTimeout(that.watch.bind(that), 2000);
+  });
+
+};
+
+Sensitive.prototype.sendUserData = function(fbResponse) {
 
   var data = {
-    session: sessionId,
-    player: playerId,
+    session: this.sessionId,
+    player: this.playerId,
     name: fbResponse.name,
     picture: 'http://graph.facebook.com/' + fbResponse.id + '/picture?type=large'
   };
 
-  socket.emit('save_user', data);
-
-  $('#FBlogin').hide();
-  $('h2').html('Hi ' + fbResponse.name + '!');
-
-}
-
-function param(name) {
-  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-  var regexS = "[\\?&]" + name + "=([^&#]*)";
-  var regex = new RegExp(regexS);
-  var results = regex.exec(window.location.search);
-  if(results === null) {
-    return "";
-  } else {
-    return decodeURIComponent(results[1].replace(/\+/g, " "));
-  }
-}
+  this.socket.emit('save_user', data);
+  this.onPlayerData(data);
+};
