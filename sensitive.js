@@ -1,12 +1,12 @@
 
 exports.sensitive = function(server, app) {
 
-  var io = require('socket.io').listen(server),
-    Encoder = require('qr').Encoder,
-    url = require('url'),
-    uuid = require('node-uuid'),
-    encoder = new Encoder(),
-    fs = require('fs');
+  var io      = require('socket.io').listen(server),
+      Encoder = require('qr').Encoder,
+      url     = require('url'),
+      uuid    = require('node-uuid'),
+      encoder = new Encoder(),
+      fs      = require('fs');
 
   var hostAddress;
   require('dns').lookup(require('os').hostname(), function(err, add, fam) {
@@ -24,19 +24,19 @@ exports.sensitive = function(server, app) {
   app.get('/get_qr', function(req, res) {
 
     var parsedUrl = url.parse(req.url, true);
-    var sessionId = parsedUrl.query.sess;
+    var session = parsedUrl.query.sess;
 
     // TODO: VALIDATE SESSIONID
 
-    if(typeof sessionId === undefined) {
-      res.json({ error: 'no sessionid provided' });
+    if(typeof session === undefined) {
+      res.json({ error: 'no session provided' });
       return;
     }
 
     var playerId = uuid.v4();
-    var qrPath = '/sensitive/tmp/qr_' + sessionId + playerId + '.png';
+    var qrPath = '/sensitive/tmp/qr_' + session + playerId + '.png';
 
-    encoder.encode('http://' + hostAddress + ':1337/play?session=' + sessionId + '&player=' + playerId, 'public' + qrPath);
+    encoder.encode('http://' + hostAddress + ':' + server.address().port + '/play?session=' + session + '&player=' + playerId, 'public' + qrPath);
 
     encoder.on('end', function(){
       res.json({ path: qrPath, player: playerId });
@@ -46,11 +46,11 @@ exports.sensitive = function(server, app) {
 
   io.sockets.on('connection', function(socket) {
 
-    var sessionId = uuid.v4();
+    var session = uuid.v4();
     // TODO: SAVE SESSIONID
 
-    socket.emit('session', sessionId);
-    socket.join(sessionId);
+    socket.emit('session', session);
+    socket.join(session);
 
     socket.on('save_user', function(data) {
       // TODO: SAVE USER INFO

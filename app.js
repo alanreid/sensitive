@@ -17,8 +17,8 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-require('./sensitive').sensitive(server, app);
-
 process.on('uncaughtException', function(err){
   console.log(err);
 });
+
+require('./sensitive').sensitive(server, app);
