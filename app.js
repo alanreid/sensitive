@@ -6,7 +6,8 @@ var express = require('express'),
     Encoder = require('qr').Encoder,
     url = require('url'),
     uuid = require('node-uuid'),
-    encoder = new Encoder();
+    encoder = new Encoder(),
+    fs = require('fs');
 
 server.listen(1337);
 
@@ -76,6 +77,9 @@ io.sockets.on('connection', function(socket) {
     socket.on('save_user', function(data) {
       // TODO: SAVE USER INFO
       io.sockets.in(data.session).emit('new_user', data);
+
+      fs.unlink('public/tmp/qr_' + data.session + data.player + '.png');
+
       io.sockets.emit('start_sensors', data);
     });
 
