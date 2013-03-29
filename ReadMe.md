@@ -31,6 +31,7 @@ This is the first version and there's lots to be done, so any help is greatly ap
 
 <img src="https://www.lucidchart.com/publicSegments/view/5155c738-1148-47aa-9ab0-0aa40a000cd9/image.png" height="300" />
 
+<img src="https://www.lucidchart.com/publicSegments/view/5155d545-9bf4-444f-8851-7b790a000cd9/image.png" height="220" />
 
 ### Supported sensors
 * Orientation
