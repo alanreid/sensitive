@@ -5,12 +5,13 @@ This is the first version and there's lots to be done, so any help is greatly ap
 
 <img src="http://f.cl.ly/items/3Z140G2p341D38462J44/Screen%20Shot%202013-03-29%20at%202.44.46%20PM.png" height="300" />
 
+<img src="http://f.cl.ly/items/1c2b3a411A2p0Z2m1L2f/2013-03-29%2014.47.31.png" height="300" />
 
 ### Installation
 
 1. Clone the repo in a clean folder: `git clone git@github.com:alanreid/Sensitive.git && cd Sensitive`
 
-2. Install dependencies: `npm install`
+2. Install dependencies: `npm install`. Please mind the QR library needs libqrencode. [Follow these steps](https://github.com/bcelenza/node-qr).
 
 3. Configure a Facebook App and set up the APP ID in `public/js/application.js`
 
