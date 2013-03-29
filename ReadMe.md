@@ -6,7 +6,7 @@ This is the first version and there's lots to be done, so any help is greatly ap
 
 ### Installation
 
-1. Clone the repo in a clean folder: `git clone git@github.com:alanreid/Sensitive.js.git && cd Sensitive.js`
+1. Clone the repo in a clean folder: `git clone git@github.com:alanreid/Sensitive.git && cd Sensitive`
 
 2. Install dependencies: `npm install`
 
