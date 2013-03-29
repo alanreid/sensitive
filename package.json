@@ -5,9 +5,9 @@
   "private": true,
   "dependencies": {
     "express": "3.x",
-    "jade": "0.28.1",
-    "qr": "0.1.5",
-    "node-uuid": "1.4.0",
+    "jade": "0.28.x",
+    "qr": "0.1.x",
+    "node-uuid": "1.4.x",
     "socket.io": "0.9"
   },
   "bundledDependencies": [
