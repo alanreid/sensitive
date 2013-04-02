@@ -54,6 +54,21 @@ This is the first version and there's lots to be done, so any help is greatly ap
 * Compass
 * Location
 
+### Using & Customizing 
+Sensitive comes with a built-in demo (the app that runs by default), but you can override this app and create your own. This is done simply by adding a `index.html` and  a `play.html` file to your `./public` folder (don't forget to include the required JS files!). 
+
+You can also add your own business logic and completely change the app to your needs. Take a look at the demo's source files for an example:
+
+* `./node_modules/sensors/public/index.html`
+* `./node_modules/sensors/public/play.html` 
+* `./node_modules/sensors/public/js/application.js`
+
+### Client-side Events
+* `onAuthInit(function())`: Only called on the mobile phone, as soon as all sensors are loaded.
+* `onPlayerConnect(function(data))`: Called on the host to announce a new player.
+* `onPlayerLogin()`: Displays the login message/form/button.
+* `onPlayerData(function(data))`: Gets the user's data after logging in.
+* `onSensor(<sensor>, function(data))`: Listens for sensor readings.
 
 ### What can I do with this?
 Well, you name it! I imagine there's plenty of room for very cool multi-user apps, 3D games, light saber battles…
@@ -62,4 +77,4 @@ Well, you name it! I imagine there's plenty of room for very cool multi-user app
 ### Contributing
 Glad you made it down here!
 
-If you find a bug, want to change something or you just have a great feature in mind, just add a new ticket! Of course it's even more awesome if you come up with the solution yourself :)
+If you find a bug, want to change something or you just have a great feature in mind, just add a new ticket! Of course it's even more awesome if you come up with the solution! :)
