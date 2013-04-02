@@ -15,7 +15,7 @@ sensitive.onAuthInit = function() {
     });
   });
 
-  $.getJson('/facebook.json', function(facebook) {
+  $.getJSON('/facebook.json', function(facebook) {
     window.fbAsyncInit = function() {
       FB.init({
         appId      : facebook.id,
