@@ -78,3 +78,23 @@ Well, you name it! I imagine there's plenty of room for very cool multi-user app
 Glad you made it down here!
 
 If you find a bug, want to change something or you just have a great feature in mind, just add a new ticket! Of course it's even more awesome if you come up with the solution! :)
+
+
+### License
+This software is licensed under the Apache 2 license, quoted below.
+```
+Copyright 2013 Alan Reid
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
