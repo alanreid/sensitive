@@ -1,5 +1,5 @@
 ## Sensitive.js
-Sensitive.js is an experimental toolkit that enables you to read the sensors of multiple phones at the time and create real-time multiplayer experiences on a single browser.
+Sensitive is an experimental node.js module that enables you to read the sensors of multiple phones at the time and create real-time multiplayer experiences on a "host" browser.
 
 This is the first version and there's lots to be done, so any help is greatly appreciated!
 
@@ -9,13 +9,28 @@ This is the first version and there's lots to be done, so any help is greatly ap
 
 ### Installation
 
-1. Clone the repo in a clean folder: `git clone git@github.com:alanreid/Sensitive.git && cd Sensitive`
+1. Install Sensitive.js: `npm install sensitive`. Please mind Sensitive requires a QR library that needs libqrencode installed. [Follow these steps](https://github.com/bcelenza/node-qr).
 
-2. Install dependencies: `npm install`. Please mind the QR library needs libqrencode. [Follow these steps](https://github.com/bcelenza/node-qr).
+2. In your app.js, attach Sensitive.js to your Connect.js server. Here's an example:
+  ```js
+  var connect = require('connect'),
+      app = connect(),
+      http = require('http'),
+      sensitive = require('sensitive');
 
-3. Configure a Facebook App and set up the APP ID in `public/js/application.js`
+  app.use(connect.favicon())
+     .use(connect.logger('dev'))
+     .use(connect.static('public'))
+     .use(sensitive.attachApp(app));
 
-4. Run `node app.js` and open `http://[your ip]:1337/` on your browser (don't use localhost or 127.0.0.1, as you need it to be remotely accessible).
+  var server = http.createServer(app).listen(1337);
+
+  sensitive.attachServer(server);
+  ```
+3. Create a `public` and a `public/tmp` folder
+4. Configure a Facebook App and set up the APP ID in a `public/facebook.json` file with this content: `{"id": "<fb app id>"}`.
+
+4. Run `node app.js` and open `http://[ip]:[port]/` on your browser (don't use localhost or 127.0.0.1, as you need it to be accessible from across the network).
 
 
 ### How does it work?
@@ -41,10 +56,10 @@ This is the first version and there's lots to be done, so any help is greatly ap
 
 
 ### What can I do with this?
-Well, you name it! I imagine there's plenty of room for very cool multi-user apps, 3D games, light saber battles… 
+Well, you name it! I imagine there's plenty of room for very cool multi-user apps, 3D games, light saber battles…
 
 
 ### Contributing
-Glad you made it down here! 
+Glad you made it down here!
 
-If you find a bug, want to change something or you just have a great feature in mind, just add a new ticket! Of course it's even more awesome if you come up with the solution yourself :) 
+If you find a bug, want to change something or you just have a great feature in mind, just add a new ticket! Of course it's even more awesome if you come up with the solution yourself :)

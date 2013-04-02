@@ -15,26 +15,28 @@ sensitive.onAuthInit = function() {
     });
   });
 
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '157671151056564',
-      channelUrl : '/channel.html',
-      status     : true,
-      cookie     : true,
-      xfbml      : false
-    });
+  $.getJson('/facebook.json', function(facebook) {
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : facebook.id,
+        channelUrl : '/channel.html',
+        status     : true,
+        cookie     : true,
+        xfbml      : false
+      });
 
-    FB.getLoginStatus(function(response) {
-      if(response.status === 'connected') {
-        $('#FBlogin').hide();
-        FB.api('/me', function(data) {
-          that.sendUserData(data);
-        });
-      } else {
-        that.onPlayerLogin();
-      }
-    });
-  };
+      FB.getLoginStatus(function(response) {
+        if(response.status === 'connected') {
+          $('#FBlogin').hide();
+          FB.api('/me', function(data) {
+            that.sendUserData(data);
+          });
+        } else {
+          that.onPlayerLogin();
+        }
+      });
+    };
+  });
 
   (function(d, debug){
     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -74,7 +76,7 @@ sensitive.onPlayerData = function(fbResponse) {
   };
 
   $('#FBlogin').hide();
-  $('h2').html('Hi ' + data.name + '!').after('<img src="/img/signal.gif" />');
+  $('h2').html('Hi ' + data.name + '!').after('<img src="/sensitive/img/signal.gif" />');
 
   return data;
 };

@@ -1,48 +1,62 @@
 
-exports.sensitive = function(server, app) {
+var socketio = require('socket.io'),
+    Encoder  = require('qr').Encoder,
+    url      = require('url'),
+    uuid     = require('node-uuid'),
+    encoder  = new Encoder(),
+    fs       = require('fs'),
+    connect  = require('connect');
 
-  var io      = require('socket.io').listen(server),
-      Encoder = require('qr').Encoder,
-      url     = require('url'),
-      uuid    = require('node-uuid'),
-      encoder = new Encoder(),
-      fs      = require('fs');
+var hostAddress, port = 1337;
 
-  var hostAddress;
-  require('dns').lookup(require('os').hostname(), function(err, add, fam) {
-    hostAddress = add;
-  });
+require('dns').lookup(require('os').hostname(), function(err, add, fam) {
+  hostAddress = add;
+});
 
-  app.get('/', function(req, res) {
-    res.render('index');
-  });
+exports.attachApp = function(app) {
 
-  app.get('/play', function(req, res) {
-    res.render('play');
-  });
+  app.use(connect.static(__dirname + '/public'));
 
-  app.get('/get_qr', function(req, res) {
+  return function(req, res, next) {
 
     var parsedUrl = url.parse(req.url, true);
-    var session = parsedUrl.query.sess;
 
-    // TODO: VALIDATE SESSIONID
+    if(parsedUrl.pathname == '/get_qr') {
 
-    if(typeof session === undefined) {
-      res.json({ error: 'no session provided' });
-      return;
+      var session = parsedUrl.query.sess;
+
+      // TODO: VALIDATE SESSIONID
+
+      if(session === undefined) {
+        res.write(JSON.stringify({ error: 'no session provided' }));
+        res.end();
+        return;
+      }
+
+      var playerId = uuid.v4();
+      var qrPath = '/tmp/qr_' + session + '_' + playerId + '.png';
+
+      encoder.encode('http://' + hostAddress + ':' + port + '/play.html?session=' + session + '&player=' + playerId, 'public' + qrPath);
+
+      encoder.on('end', function() {
+        res.write(JSON.stringify({ path: qrPath, player: playerId }));
+        res.end();
+      });
+
+    } else {
+      next();
     }
 
-    var playerId = uuid.v4();
-    var qrPath = '/sensitive/tmp/qr_' + session + playerId + '.png';
+  };
 
-    encoder.encode('http://' + hostAddress + ':' + server.address().port + '/play?session=' + session + '&player=' + playerId, 'public' + qrPath);
+};
 
-    encoder.on('end', function(){
-      res.json({ path: qrPath, player: playerId });
-    });
+exports.attachServer = function(server) {
 
-  });
+  // TODO: Find a less hacky way to get the port number
+  port = server._connectionKey.split(':')[2];
+
+  var io = socketio.listen(server);
 
   io.sockets.on('connection', function(socket) {
 
@@ -61,7 +75,7 @@ exports.sensitive = function(server, app) {
       io.sockets.emit('start_sensors', data);
     });
 
-    // REPLACE THIS WITH A GENERIC EVENT
+    // TODO: REPLACE THIS WITH A GENERIC EVENT
     socket.on('orientation_sensor', function(data) {
       io.sockets.in(data.session).emit('orientation_sensor', data);
     });
@@ -79,4 +93,8 @@ exports.sensitive = function(server, app) {
     });
   });
 
+  return server;
+
 };
+
+
