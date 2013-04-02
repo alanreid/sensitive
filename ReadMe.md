@@ -30,7 +30,7 @@ This is the first version and there's lots to be done, so any help is greatly ap
 3. Create a `public` and a `public/tmp` folder
 4. Configure a Facebook App and set up the APP ID in a `public/facebook.json` file with this content: `{"id": "<fb app id>"}`.
 
-4. Run `node app.js` and open `http://[ip]:[port]/` on your browser (don't use localhost or 127.0.0.1, as you need it to be accessible from across the network).
+4. Run `node app.js` and open `http://localhost:1337` on your browser.
 
 
 ### How does it work?
