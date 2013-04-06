@@ -1,64 +1,12 @@
 
 var sensitive = new Sensitive();
 
-sensitive.onAuthInit = function() {
+sensitive.setAuthProvider(facebookProvider);
 
-  (function(d, debug){
-    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement('script'); js.id = id; js.async = true;
-    js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
-    ref.parentNode.insertBefore(js, ref);
-  }(document, /*debug*/ false));
-
-  var that = this;
-
-  $('body').addClass('play');
-
-  loadTemplate('login.fb', function(output) {
-    $('#sensitive').append(output);
-    loadFacebook();
-  });
-
-  function loadFacebook() {
-
-    $('#FBlogin').click(function() {
-      FB.login(function(response) {
-        if(response.authResponse) {
-          FB.api('/me?fields=name,picture', function(data) {
-            that.sendUserData(data);
-          });
-        }
-      });
-    });
-
-    $.getJSON('/facebook.json', function(facebook) {
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : facebook.id,
-          channelUrl : '/channel.html',
-          status     : true,
-          cookie     : true,
-          xfbml      : false
-        });
-
-        FB.getLoginStatus(function(response) {
-          if(response.status === 'connected') {
-            $('#FBlogin').hide();
-            FB.api('/me', function(data) {
-              that.sendUserData(data);
-            });
-          } else {
-            that.onPlayerShowLogin();
-          }
-        });
-      };
-    });
-
-  }
-
-};
+sensitive.addSensor(orientationSensor);
+//sensitive.addSensor(motionSensor);
+//sensitive.addSensor(compassSensor);
+//sensitive.addSensor(locationSensor);
 
 sensitive.onPlayerConnect = function(data) {
   var elem = $('.playerContainer[playerid=' + data.player + '] .player');
@@ -73,25 +21,6 @@ sensitive.onPlayerConnect = function(data) {
   $('#start').css('display', 'inline-block');
 
   elem.parent().addClass('flipped');
-};
-
-sensitive.onPlayerShowLogin = function(data) {
-  $('h2').html('');
-  $('#FBlogin').show();
-};
-
-sensitive.onPlayerData = function(fbResponse) {
-
-  var data = {
-    name: fbResponse.name,
-    picture: 'http://graph.facebook.com/' + fbResponse.id + '/picture?type=large'
-  };
-
-  loadTemplate('loggedin.fb', data, function(output) {
-    $('#sensitive').html(output);
-  });
-
-  return data;
 };
 
 sensitive.onSensor('orientation', function(data) {
@@ -114,11 +43,6 @@ sensitive.onSensor('motion', function(data) {
     webkitTransform: "rotate(" + data.gamma + "deg) rotate3d(1,0,0, " + data.beta + "deg)"
   });
 });
-
-sensitive.addSensor(orientationSensor);
-//sensitive.addSensor(motionSensor);
-//sensitive.addSensor(compassSensor);
-//sensitive.addSensor(locationSensor);
 
 $(function() {
   sensitive.init();

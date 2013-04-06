@@ -4,6 +4,7 @@ var Sensitive = function() {
   this.container = $('#sensitive');
   this.sessionId = '';
   this.socket = io.connect('http://' + location.hostname);
+  this.authProvider = {};
   this.events = {};
   this.sensors = {};
 
@@ -31,17 +32,16 @@ Sensitive.prototype.isMobile = function() {
   return false;
 };
 
-Sensitive.prototype.onPlayerConnect = function(data) {};
-Sensitive.prototype.onPlayerShowLogin = function(data) {};
-Sensitive.prototype.onPlayerData = function(data) {
-  return data;
+Sensitive.prototype.setAuthProvider = function(provider) {
+  this.authProvider = provider;
 };
-Sensitive.prototype.onAuthInit = function() {};
+
 Sensitive.prototype.init = function() {
   if(this.isMobile()) {
-    this.onAuthInit();
+    this.authProvider.onAuthInit();
   }
 };
+
 Sensitive.prototype.onSensor = function(sensor, callback) {
 
   if(typeof callback === 'function') {
@@ -73,17 +73,5 @@ Sensitive.prototype.addSensor = function(sensor) {
 };
 
 
-var Sensor = function(name) {
-  this.name = name;
-  this.socket = {};
-  this.data = {};
-};
 
-Sensor.prototype.watch = function() {};
-Sensor.prototype.onEventData = function(eventData) {};
-Sensor.prototype.handler = function(eventData) {
-  if(this.onEventData(eventData)) {
-    this.socket.emit(this.name + '_sensor', this.data);
-  }
-};
 

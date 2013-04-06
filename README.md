@@ -27,8 +27,7 @@ This is the first version and there's lots to be done, so any help is greatly ap
 
   sensitive.attachServer(server);
   ```
-3. Create a `public` and a `public/tmp` folder
-4. Configure a Facebook App and set up the APP ID in a `public/facebook.json` file with this content: `{"id": "<fb app id>"}`.
+3. Create a `public` and a `public/tmp` folder and give it write permissions.
 
 4. Run `node app.js` and open `http://localhost:1337` on your browser.
 
@@ -53,6 +52,16 @@ This is the first version and there's lots to be done, so any help is greatly ap
 * Motion
 * Compass
 * Location
+
+### Authentication Providers
+Sensitive allows you to select how players are authenticated. By default it just asks for the player's name, but you can choose from the following authentication providers:
+
+* Default
+* Facebook
+
+##### Authentication Providers: Facebook
+1. Create a Facebook App on Facebook (don't forget to set it as a mobile app) and create a `public/facebook.json` file with your app id: `{"id": "<fb app id>"}`.
+2. Let Sensitive know what provider you are using: `sensitive.setAuthProvider(defaultProvider);`
 
 ### Using & Customizing
 Sensitive comes with a built-in demo (the app that runs by default), but you can override this app and create your own.

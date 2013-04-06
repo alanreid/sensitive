@@ -5,6 +5,8 @@ Sensitive.prototype.startMobile = function(callback) {
   this.sessionId = param('session');
   this.playerId  = param('player');
 
+  $('body').addClass('play');
+
   document.body.addEventListener('touchmove', function(event) {
     event.preventDefault();
   }, false);
@@ -30,5 +32,5 @@ Sensitive.prototype.sendUserData = function(data) {
     picture: ''
   };
 
-  this.socket.emit('save_user', $.extend(info, this.onPlayerData(data)));
+  this.socket.emit('save_user', $.extend(info, this.authProvider.onPlayerData(data)));
 };
