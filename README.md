@@ -57,7 +57,7 @@ This is the first version and there's lots to be done, so any help is greatly ap
 ### Using & Customizing
 Sensitive comes with a built-in demo (the app that runs by default), but you can override this app and create your own.
 
-You can also add your own business logic and completely change the app to your needs. Take a look at `./node_modules/sensitive/public/js/application.js` for an example and add one to your public folder to override it (`public/js/application.js`).
+You can also add your own business logic and completely change the app to your needs. Take a look at `./node_modules/sensitive/public/js/application.js` for an example and add one to your public folder to override it (`public/js/application.js`). You can do exactly the same with the templates (overriding files from `public/sensitive/templates`).
 
 ### Client-side Events
 * `onAuthInit(function())`: Only called on the mobile phone, as soon as all sensors are loaded.
