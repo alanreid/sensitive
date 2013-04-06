@@ -32,7 +32,7 @@ Sensitive.prototype.isMobile = function() {
 };
 
 Sensitive.prototype.onPlayerConnect = function(data) {};
-Sensitive.prototype.onPlayerLogin = function(data) {};
+Sensitive.prototype.onPlayerShowLogin = function(data) {};
 Sensitive.prototype.onPlayerData = function(data) {
   return data;
 };

@@ -46,14 +46,14 @@ h1 {
 }
 
 body {
+  background:#000 url(../img/background.gif);
+}
+
+body.play {
 	background:#c0c0c0;
 }
 
-body.home {
-	background:#000 url(../img/background.gif);
-}
-
-#container {
+#sensitive {
 	width:960px;
 	margin:0 auto;
 	text-align:center;
@@ -63,7 +63,7 @@ body.home {
          perspective: 960px;
 }
 
-body.play #container {
+body.play #sensitive {
 	width:100% !important;
 }
 

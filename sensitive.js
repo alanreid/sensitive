@@ -36,7 +36,7 @@ exports.attachApp = function(app) {
       var playerId = uuid.v4();
       var qrPath = '/tmp/qr_' + session + '_' + playerId + '.png';
 
-      encoder.encode('http://' + hostAddress + ':' + port + '/play.html?session=' + session + '&player=' + playerId, 'public' + qrPath);
+      encoder.encode('http://' + hostAddress + ':' + port + '/?session=' + session + '&player=' + playerId, 'public' + qrPath);
 
       encoder.on('end', function() {
         res.write(JSON.stringify({ path: qrPath, player: playerId }));

@@ -55,13 +55,9 @@ This is the first version and there's lots to be done, so any help is greatly ap
 * Location
 
 ### Using & Customizing
-Sensitive comes with a built-in demo (the app that runs by default), but you can override this app and create your own. This is done simply by adding a `index.html` and  a `play.html` file to your `./public` folder (don't forget to include the required JS files!).
+Sensitive comes with a built-in demo (the app that runs by default), but you can override this app and create your own.
 
-You can also add your own business logic and completely change the app to your needs. Take a look at the demo's source files for an example:
-
-* `./node_modules/sensitive/public/index.html`
-* `./node_modules/sensitive/public/play.html`
-* `./node_modules/sensitive/public/js/application.js`
+You can also add your own business logic and completely change the app to your needs. Take a look at `./node_modules/sensitive/public/js/application.js` for an example and add one to your public folder to override it (`public/js/application.js`).
 
 ### Client-side Events
 * `onAuthInit(function())`: Only called on the mobile phone, as soon as all sensors are loaded.
