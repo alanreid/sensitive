@@ -1,7 +1,7 @@
 
 var sensitive = new Sensitive();
 
-sensitive.setAuthProvider(facebookProvider);
+sensitive.setAuthProvider(defaultProvider);
 
 sensitive.addSensor(orientationSensor);
 //sensitive.addSensor(motionSensor);
