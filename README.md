@@ -69,11 +69,8 @@ Sensitive comes with a built-in demo (the app that runs by default), but you can
 You can also add your own business logic and completely change the app to your needs. Take a look at `./node_modules/sensitive/public/js/application.js` for an example and add one to your public folder to override it (`public/js/application.js`). You can do exactly the same with the templates (overriding files from `public/sensitive/templates`).
 
 ### Client-side Events
-* `onAuthInit(function())`: Only called on the mobile phone, as soon as all sensors are loaded.
-* `onPlayerConnect(function(data))`: Called on the host to announce a new player.
-* `onPlayerLogin()`: Displays the login message/form/button.
-* `onPlayerData(function(data))`: Gets the user's data after logging in.
-* `onSensor(<sensor>, function(data))`: Listens for sensor readings.
+* `onPlayerConnect(function(data))`: Called on the host each time a player joins the session.
+* `onSensor(<sensor>, function(data))`: Listens for the specified sensor's readings.
 
 ### What can I do with this?
 Well, you name it! I imagine there's plenty of room for very cool multi-user apps, 3D games, light saber battles…
