@@ -18,7 +18,7 @@ Sensitive.prototype.startHost = function(callback) {
         $.getJSON('/get_qr', { sess: that.sessionId }, function(view) {
           loadTemplate('player', view, function(output) {
             var html = $(output).hide();
-            $('#players').prepend(html);
+            $('#addPlayer').before(html);
             html.fadeIn(500);
           });
         });
