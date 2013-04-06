@@ -61,7 +61,7 @@ Sensitive allows you to select how players are authenticated. By default it just
 
 ##### Authentication Providers: Facebook
 1. Create a Facebook App on Facebook (don't forget to set it as a mobile app) and create a `public/facebook.json` file with your app id: `{"id": "<fb app id>"}`.
-2. Let Sensitive know what provider you are using: `sensitive.setAuthProvider(defaultProvider);`
+2. Let Sensitive know that you want to use the facebookProvider: `sensitive.setAuthProvider(facebookProvider);`
 
 ### Using & Customizing
 Sensitive comes with a built-in demo (the app that runs by default), but you can override this app and create your own.
