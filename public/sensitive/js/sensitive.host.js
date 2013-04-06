@@ -8,7 +8,7 @@ Sensitive.prototype.startHost = function(callback) {
     return false;
   }
 
-  loadTemplate('players', {}, function(output) {
+  loadTemplate('players', function(output) {
 
       that.container.hide().html(output).fadeIn(500);
 

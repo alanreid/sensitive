@@ -1,5 +1,11 @@
 
 function applyTemplate(template, view, fn) {
+
+  if(typeof view === 'function' && fn === undefined) {
+    fn = view;
+    view = {};
+  }
+
   if(typeof fn === 'function') {
     var html = Mustache.to_html(template, view);
     fn(html);
