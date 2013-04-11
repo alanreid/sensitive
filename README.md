@@ -7,6 +7,9 @@ This is the first version and there's lots to be done, so any help is greatly ap
 
 <img src="http://cl.ly/image/2e1n030Z2V2d/2013-03-29%2014.52.33.png" height="300" />
 
+### Intro screencast (spanish)
+http://www.youtube.com/watch?v=fZrboc5n_ls
+
 ### Installation
 
 1. Install Connect.js and Sensitive.js: `npm install connect sensitive`. Please mind Sensitive requires a QR library that needs libqrencode installed. [Follow these steps](https://github.com/bcelenza/node-qr).
