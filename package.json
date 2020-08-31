@@ -23,7 +23,7 @@
   },
   "main": "sensitive.js",
   "dependencies": {
-    "connect": "2.7.4",
+    "connect": "3.7.0",
     "qr": "0.1.5",
     "node-uuid": "1.4.0",
     "socket.io": "0.9"
